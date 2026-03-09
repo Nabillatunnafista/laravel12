@@ -4,13 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - {{ $profile['name'] }}</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body { font-family: 'Poppins', sans-serif; }
-        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
     
+    <style>
+        /* Menerapkan font Poppins ke seluruh body website */
+        body { font-family: 'Poppins', sans-serif; }
+        /* Mengatur durasi dan gaya animasi saat kotak (card) disentuh kursor */
+        .hover-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        
+        /* Gaya khusus Navbar saat di-scroll: transparan, blur (kaca), dan ada garis bawah tipis */
         .nav-blur {
             background-color: rgba(11, 14, 20, 0.8) !important;
             backdrop-filter: blur(12px) !important;
@@ -100,12 +105,8 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                 @foreach($skills as $category => $items)
                 <div class="hover-card bg-[#161b22] p-8 rounded-xl border border-gray-800 hover:border-orange-500 hover:-translate-y-2 hover:shadow-[0_10px_30px_-10px_rgba(249,115,22,0.3)] transition-all duration-300">
-                    <h3 class="font-bold text-orange-500 text-xl uppercase tracking-wider">
-                        {{ $category }}
-                    </h3>
-                    <p class="text-gray-400 text-sm mt-2 leading-relaxed font-light">
-                        {{ implode(', ', $items) }}
-                    </p>
+                    <h3 class="font-bold text-orange-500 text-xl uppercase tracking-wider">{{ $category }}</h3>
+                    <p class="text-gray-400 text-sm mt-2 leading-relaxed font-light">{{ implode(', ', $items) }}</p>
                 </div>
                 @endforeach
             </div>
@@ -128,12 +129,13 @@
     </section>
 
     <script>
+        // Mengambil elemen HTML berdasarkan ID-nya
         const nav = document.getElementById('main-nav');
         const btn = document.getElementById('menu-btn');
         const menu = document.getElementById('mobile-menu');
         const links = document.querySelectorAll('.mobile-link');
 
-        // Deteksi Scroll untuk efek blur navbar
+        // Fungsi Deteksi Scroll: Jika layar digeser lebih dari 20px, tambahkan efek blur kaca ke navbar [cite: 152]
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) {
                 nav.classList.add('nav-blur');
@@ -142,11 +144,12 @@
             }
         });
 
-        // Toggle Menu Mobile
+        // Fungsi Tombol Mobile: Menghapus/Menambah class 'hidden' agar menu muncul/hilang saat diklik
         btn.addEventListener('click', () => {
             menu.classList.toggle('hidden');
         });
 
+        // Tutup menu mobile secara otomatis jika salah satu link navigasi diklik
         links.forEach(link => {
             link.addEventListener('click', () => {
                 menu.classList.add('hidden');

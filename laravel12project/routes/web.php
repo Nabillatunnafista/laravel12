@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/about', [AboutController::class, 'index']);
