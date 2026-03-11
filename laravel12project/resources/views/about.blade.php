@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - {{ $profile['name'] }}</title>
+    <title>Portfolio - {{ $profile->name }}</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -56,7 +56,7 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-10 md:gap-16">
             <div class="relative flex-shrink-0">
                 <div class="relative z-10 w-64 h-64 md:w-80 md:h-80 overflow-hidden rounded-full border-8 border-[#161b22] shadow-2xl">
-                    <img src="{{ asset($profile['photo']) }}" alt="Foto Nabillatun" class="w-full h-full object-cover">
+                    <img src="{{ asset($profile->photo) }}" alt="Foto Nabillatun" class="w-full h-full object-cover">
                 </div>
                 <div class="absolute bottom-4 right-10 w-10 h-10 bg-orange-500 rounded-full border-4 border-[#0b0e14] z-20 animate-pulse"></div>
             </div>
@@ -65,7 +65,7 @@
                 <div>
                     <h2 class="text-orange-500 font-bold text-5xl">Hallo!</h2>
                     <p class="mt-4 text-gray-400 text-base leading-relaxed text-justify font-light">
-                        {{ $profile['bio'] }}
+                        {{ $profile->bio }}
                     </p>
                 </div>
                 
